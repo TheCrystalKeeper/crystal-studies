@@ -33,47 +33,79 @@
 
 	</head>
 	<body>
-		<h2>CS 184 Final Project Name</b></h2>
+		<h2>Robust Particle Simulator</b></h2>
 		<center>
-		<h5 style="color: #DBDEE1">By Jaron Erba, Jennifer Zhao, Sriram Srivatsan, and Lili Wang</h5>
+		<h4 style="color: #DBDEE1">By the Preposterous Particles:</h4>
+		<h5 style="color: #DBDEE1">Jaron Erba, Jennifer Zhao, Sriram Srivatsan, and Lili Wang</h5>
 		</center>
 		<br>
 		
-		<h3><b>Project Summary</b></h3>
-		<p style="color: #DBDEE1; width: 100%">Project summary here..</p>
+		<h3 style="color: #4889ca"><b>Project Summary</b></h3>
+		<p style="color: #DBDEE1; width: 100%">In our project we will design a particle simulator which simulates the movement of particles as influenced by wind and other real-world forces. We will also design the particle simulator so that it can be used to represent macroscopic particles with different colors and textures, such as leaves. If time allows, we will expand this project to simulate smoke, fluids, and other complex multi-particle systems.</p>
 		<br><br>
 		
-		<h3><b>Problem Description</b></h3>
-		<p style="color: #DBDEE1; width: 100%">Here you should provide the context for your idea. Describe the problem that you are trying to solve, why it is important, where it is challenging. Give us a general idea on how you are going to solve it.</p>
+		<h3 style="color: #4889ca"><b>Problem Description</b></h3>
+		<p style="color: #DBDEE1; width: 100%"> Methods of accurately modeling physical phenomena is an active area of research, in part because of the demand for special effects in feature films. Inspired by Dune: Part Two, our group will tackle the task of building a robust particle simulator that accounts for external forces, such as gravity, wind, and air resistance. This simulator will expand to account for both microscopic and macroscopic particles, as well as models with thousands of particles such as dust, smoke, and fluids. </p>
+		<p style="color: #DBDEE1; width: 100%"> Physically accurate particle simulations can be complex and computationally costly. Furthermore, such as in the case of fire, the underlying physical problem might not be well understood enough. However, methods that sacrifice physical accuracy may be unconvincing or visually unappealing. Although it is possible to model particles through offline rendering, it is very hard to simulate particles in a life-like manner in real time for videogames and other interactive applications.</p>
+		<p style="color: #DBDEE1; width: 100%"> We plan on solving this by approximating particle movement from external forces. We will abstract this heuristic to multiple particles as well as objects with thousands of particles in a mesh-like pattern. Furthermore, we will attempt to incorporate hardware acceleration such as code-optimizations with caches, multi-threading, and GPU-based computation. We will attempt to make the simulation real-time, with at least 10,000 particles (can be adjusted based on processor power) and at least 60fps (may be more, but absolutely not less).</p>
 		<br><br>
 		
-		<h3><b>Goals and Deliverables</b></h3>
-		<h4><b>Measuring Performance</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Other Point</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Other Point</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Other Point</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
+		<h3 style="color: #4889ca"><b>Goals and Deliverables</b></h3>
+		<p style="color: #DBDEE1; width: 100%"> 
+		We hope to answer the following question in our project: “How do you simulate a complex particle system with authentic interactions in real time?” Our main goal is to be able to simulate a realistic game setting with all sorts of particles with at least 60 fps. We will set our baseline goal to include at least 10,000 particles, with the definition of a particle being one vertex affected by real-world forces. 
+		</p>
+
+		<p style="color: #DBDEE1; width: 100%">We will measure our accuracy by comparing our simulation to what happens in nature, with examples including videos of sandstorms, leaves blowing in the wind, and smoke from fires. For a more metric measure if time permits, we will try to compare our real-time render to one created offline with highly accurate simulations. 
+		</p>
+
+		<p style="color: #DBDEE1; width: 100%">We will attempt to further accelerate our particle simulator by using heuristics for particles that have less impact on the overall quality, such as items that are completely hidden or far away. We will also try to create and incorporate acceleration structures to further improve the speed of our rendering each frame. 
+		</p>
+
+		<p style="color: #DBDEE1; width: 100%">The final product will be a 4-5 minute video of different scenarios that we were able to simulate in real time with our particle simulator. This video will incorporate different game scenarios and different types of particles, including but not limited to sand, dust, fire, fluids, and leaves. For a shortened demo, we will turn the video into a 10 second gif with 2-3 seconds per scenario.
+		</p>
+
+		<p style="color: #DBDEE1; width: 100%">To attempt to get a full score, our baseline goal is to be able to render three different scenes with three different types of particles or particle objects with at least 60 frames per second. If time permits, we will increase the number of different particles and particle groups we can render, with no real limit as long as the deadline is far away. For example, we could improve our leaf simulator to incorporate similar “particles” such as paper in the wind and maybe even hang-gliders/parachutes. We will also take a CS 284A route and write a final paper using the SIGGRAPH format. Our idea of leaf representations will likely be the main focus of this paper, since we are unable to find a paper that describes real-time leaf simulation. 
+		</p>
+
+		<p style="color: #DBDEE1; width: 100%">If many technical difficulties arise, we may decrease the number of scenes or particle types, but we will aim to keep the fps metric as a minimum standard. We will keep the realism of our simulation as our number two priority behind speed, since there is no point making ten unrealistic scenarios. If we unfortunately run into a lot of time trouble, we will eliminate the idea of writing a SIGGRAPH-level paper before the deadline. However, our group plans to work on this idea further until we have a very refined final product for self-satisfaction.
+		</p>
+		
 		<br><br>
 		
-		<h3><b>Schedule</b></h3>
-		<h4><b>Week 1</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Week 2</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Week 3</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Week 4</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
+		<h3 style="color: #4889ca"><b>Schedule</b></h3>
+		<h4 style="color: #84b8eb"><b>Week 1 4/1 - 4/7</b></h4>
+		<p style="color: #DBDEE1; width: 100%">This week will be dedicated to getting baseline code capable of rendering a realistic in-game scenario, without the existence of a few particles. We will also collect formulas and ideas to describe the motion of sand, smoke, leaves, and water, which we will later incorporate into code.
+		</p>
+		<h4 style="color: #84b8eb"><b>Week 2 4/8 - 4/14</b></h4>
+		<p style="color: #DBDEE1; width: 100%">We will spend this portion of time coding up basic particle representations as well as forces related to simulating this particle in real time. This week will have a heavy emphasis on making the simulations accurate.
+		</p>
+		<h4 style="color: #84b8eb"><b>Week 3 4/15 - 4/21</b></h4>
+		<p style="color: #DBDEE1; width: 100%">We will spend this portion of time coding up more advanced particle representations as well as forces related to simulating these particles in real time. This week will have a heavy emphasis on making the simulations faster, with acceleration structures, hardware manipulation, and code optimization.
+		</p>
+		<h4 style="color: #84b8eb"><b>Week 4 4/22 - 4/28</b></h4>
+		<p style="color: #DBDEE1; width: 100%">This week will be dedicated to refining our final project and making a presentation-ready final project. Here, we will work on the final deliverables and write our SIGGRAPH paper. Due to the restriction of midterms and finals, we will likely have 90% of our final project done before this week, and spend the entirety of this week checking off rubric items and deliverables.
+		</p>
+		<h4 style="color: #84b8eb"><b>Tuesday, April 30</b></h4>
+		<p style="color: #DBDEE1; width: 100%">Final Project Due</p>
 		<br><br>
 		
-		<h3><b>Resources</b></h3>
-		<h4><b>Conputing Platform and Resources</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
-		<h4><b>Sources</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Placeholder</p>
+		<h3 style="color: #4889ca"><b>Resources</b></h3>
+		<h4 style="color: #84b8eb"><b>Computing Platform and Resources</b></h4>
+		<p style="color: #DBDEE1; width: 100%">Our project will likely start from borrowing existing code from Project 4 - Clothsim. We will however incorporate more complex scenarios, objects, and forces, as well as a slight overhaul of the mesh representation.
+		</p>
+		<p style="color: #DBDEE1; width: 100%">If it is easier, we will try using either unity or blender, although it is highly doubtful whether we will have time to learn the specifics required to do our project effectively with these software.
+		</p>
+		<h4 style="color: #84b8eb"><b>Sources</b></h4>
+		<p style="color: #DBDEE1; width: 100%">These are the following sources we feel we will use for a majority of the project. If any small concepts are found in papers/websites as the project goes along, we will be sure to include and cite them in our final product.
+		</p>
+		<p style="color: #DBDEE1; width: 100%">https://fvcaputo.github.io/2016/01/11/sand-particle-system-in-unity.html
+		</p>
+		<p style="color: #DBDEE1; width: 100%">https://www.cs.unc.edu/~golas/expressionweb/pbs/project.html
+		</p>
+		<p style="color: #DBDEE1; width: 100%">https://upcommons.upc.edu/bitstream/handle/2117/86193/R07-10.pdf
+		</p>
+		<p style="color: #DBDEE1; width: 100%">https://link.springer.com/article/10.1007/s41095-015-0025-1
+		</p>
 		<br>
 	</body>
 	<script>
