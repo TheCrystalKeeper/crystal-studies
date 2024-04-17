@@ -69,87 +69,13 @@
 
 		<a href="https://thecrystalkeeper.github.io/final-project/">Project Milestone Video</a>
 		<br>
-		<a href="https://thecrystalkeeper.github.io/final-project/">Project Milestone Presentation Slides</a>
 		<br>
-
-		<!-- <h3 style="color: #4889ca"><b>Project Summary</b></h3>
-		<p style="color: #DBDEE1; width: 100%">In our project we will design a particle simulator which simulates the movement of particles as influenced by wind and other real-world forces. We will also add the ability to represent macroscopic paraticles with different colors and textures, such as leaves, to the simulator. If time allows, we will expand this project to simulate smoke, fluids, and other complex multi-particle systems.</p>		
-		<br><br>
-		
-		<h3 style="color: #4889ca"><b>Problem Description</b></h3>
-		<p style="color: #DBDEE1; width: 100%"> Methods of accurately modeling physical phenomena is an active area of research, in part because of the demand for special effects in feature films. Inspired by the sand and dust simulations in Dune: Part Two, our group will tackle the task of building a robust particle simulator that accounts for external forces, such as gravity, wind, and air resistance. This simulator will be able to model both microscopic and macroscopic particles, as well as models with thousands of particles such as dust, smoke, and fluids. </p>		
-		<p style="color: #DBDEE1; width: 100%"> Physically accurate particle simulations can be complex and computationally costly. Furthermore, such as in the case of fire, the underlying physical problem might not be well understood enough. However, methods that sacrifice physical accuracy may be unconvincing or visually unappealing. Although it is possible to model particles through offline rendering, it is very hard to simulate particles in a life-like manner in real time for videogames and other interactive applications.</p>
-		<p style="color: #DBDEE1; width: 100%"> We plan on solving this by approximating particle movement from external forces. We will abstract this heuristic to multiple particles as well as objects with thousands of particles in a mesh-like pattern. Furthermore, we will attempt to incorporate hardware acceleration such as code-optimizations with caches, multi-threading, and GPU-based computation. We will attempt to make the simulation real-time, with at least 10,000 particles (can be adjusted based on processor power) and at least 60fps (may be more, but absolutely not less).</p>
-		<br><br>
-		
-		<h3 style="color: #4889ca"><b>Goals and Deliverables</b></h3>
-		<p style="color: #DBDEE1; width: 100%"> 
-		We hope to answer the following question in our project: "How do you simulate a complex particle system with authentic interactions in real time?" Our main goal is to be able to simulate a realistic game setting with many different types of particles with at least 60 fps. We will set our baseline goal to include at least 10,000 particles, with the definition of a particle being one vertex affected by real-world forces. 
-		</p>
-
-		<p style="color: #DBDEE1; width: 100%">We will measure our accuracy by comparing our simulation to what happens in nature, with examples including videos of sandstorms, leaves blowing in the wind, and smoke from fires. For a more metric measure if time permits, we will try to compare our real-time render to one created offline with highly accurate simulations. 
-		</p>
-
-		<p style="color: #DBDEE1; width: 100%">We will attempt to further accelerate our particle simulator by using heuristics for particles that have less impact on the overall quality, such as items that are completely hidden or far away. We will also try to create and incorporate acceleration structures to further improve the speed of our rendering each frame. 
-		</p>
-
-		<p style="color: #DBDEE1; width: 100%">The final product will be a 4-5 minute video of different scenarios that we were able to simulate in real time with our particle simulator. This video will incorporate different game scenarios and different types of particles, including but not limited to sand, leaves, dust, fire, and fluids. For a shortened demo, we will turn the video into a 10 second gif with 2-3 seconds per scenario.
-		</p>
-
-		<p style="color: #DBDEE1; width: 100%">Our baseline goal is to be able to render three different scenes with three different types of particles or particle objects with at least 60 frames per second. If time permits, we will increase the number of different particles and particle groups we can render. For example, we could improve our leaf simulator to incorporate similar “particles” such as paper in the wind and maybe even hang-gliders/parachutes. We will also write our final paper using the SIGGRAPH format, with the main focus of the paper being our idea on leaf representations. 
-		</p>
-
-		<p style="color: #DBDEE1; width: 100%">If technical difficulties arise, we may decrease the number of scenes or particle types, but we will aim to keep the fps metric as a minimum standard. We will focus on making sure the simulations we make are realistic, rather than making a high number of simulations. If we unfortunately run into many technical difficulties, we will not write a SIGGRAPH format paper before the deadline. However, our group plans to work on this idea further until we have a refined final product for self-satisfaction.
-		</p>
-		
-		<br><br>
-		
-		<h3 style="color: #4889ca"><b>Schedule</b></h3>
-		<h4 style="color: #84b8eb"><b>Week 1 4/1 - 4/7</b></h4>
-		<p style="color: #DBDEE1; width: 100%">This week will be dedicated to getting baseline code capable of rendering a realistic in-game scenario, not yet adding particles. We will also collect formulas and ideas to describe the motion of sand, smoke, leaves, and water, which we will later incorporate into code.
-		</p>
-		<h4 style="color: #84b8eb"><b>Week 2 4/8 - 4/14</b></h4>
-		<p style="color: #DBDEE1; width: 100%">We will spend this portion of time coding up our various particle representations as well as forces related to simulating these particles in real time. This week we will focus on making the simulations physically accurate.
-		</p>
-		<h4 style="color: #84b8eb"><b>Week 3 4/15 - 4/21</b></h4>
-		<p style="color: #DBDEE1; width: 100%">We will spend this portion of time coding up more advanced particle representations and forces so we can simulate these particles in real time. This week we will focus on making the simulations faster, with acceleration structures, hardware manipulation, and code optimization.
-		</p>
-		<h4 style="color: #84b8eb"><b>Week 4 4/22 - 4/28</b></h4>
-		<p style="color: #DBDEE1; width: 100%">This week will be dedicated to refining our final project and making it presentation-ready. We will work on the final deliverables and write our SIGGRAPH paper. 
-		</p>
-		<h4 style="color: #84b8eb"><b>Tuesday, April 30</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Final Project Due</p>
-		<br><br>
-		
-		<h3 style="color: #4889ca"><b>Resources</b></h3>
-		<h4 style="color: #84b8eb"><b>Computing Platform and Resources</b></h4>
-		<p style="color: #DBDEE1; width: 100%">Our project will likely start by borrowing existing code from Homework 4 - Clothsim. We will however incorporate more complex scenarios, objects, and forces, as well as changes to the mesh representation.
-		</p>
-		<p style="color: #DBDEE1; width: 100%">We will try using either Unity or Blender to create the basic objects for our scenarios, but not for our realistic simulation.
-		</p>
-		<h4 style="color: #84b8eb"><b>Sources</b></h4>
-		<p style="color: #DBDEE1; width: 100%">These are the following sources we feel we will use for a majority of the project. If any small concepts are found in papers/websites as the project goes along, we will be sure to include and cite them in our final product.
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://fvcaputo.github.io/2016/01/11/sand-particle-system-in-unity.html
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://www.cs.unc.edu/~golas/expressionweb/pbs/project.html
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://upcommons.upc.edu/bitstream/handle/2117/86193/R07-10.pdf
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://link.springer.com/article/10.1007/s41095-015-0025-1
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://link.springer.com/article/10.1007/BF02950424
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://dl.acm.org/doi/abs/10.1145/1185657.1185725
-		</p>
-		<p style="color: #DBDEE1; width: 100%">https://www.doc.ic.ac.uk/~dfg/graphics/GraphicsLecture17.pdf
-		</p>
-		<br> -->
-
-		<a href="/milestone/index.html">Project Milestone</a>
-		<p>Slides: https://docs.google.com/presentation/d/14ptKYa0AihhWREvRuuecXLMB9_yRW9wVIqEGc3Z_Zh0/edit#slide=id.g2cd11bda039_0_51</p>
+		<a href="https://docs.google.com/presentation/d/14ptKYa0AihhWREvRuuecXLMB9_yRW9wVIqEGc3Z_Zh0/edit#slide=id.g2cd11bda039_0_51<">Project Milestone Presentation Slides</a>
+		<br>
+		<br>
+		<a href="/../index.html">Project Proposal</a>
 	</body>
-	<script>
+<!-- 	<script>
 		var links = document.body.getElementsByTagName("a")
 		var a = window.location.href.indexOf(".io")
 		var repo_name = window.location.href.substring(a+3)
@@ -158,5 +84,5 @@
 			var actual_name = link.href.substring(link.href.indexOf(".io")+4)
 			link.href = repo_name + actual_name
 		}
-	</script>
+	</script> -->
 </html>
