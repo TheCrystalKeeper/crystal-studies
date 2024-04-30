@@ -53,14 +53,29 @@
 
 		<h3>Technical Approach</h3>
 
-		<h4>Terrain Objects in Unity</h4>
-		
+		<h4>Unity, Blender, and Sources</h4>
+
 		<p stye="width: 100%">
-			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is ran upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic instead of block-y while also minimizing computational and storage overhead. In this project, we implemented many popular terrain generation algorithms such as 2D and 3D Perlin Noise and Marching Cubes, incorporating our own ideas in order to adapt the generation for the purpose of making unique and interesting scenes.
+			Due to the overhead of creating our own rendering application or building from a CS 184 project implementation, we decided to use Unity in order to help with rendering our objects and having datastructures we could modify. To ensure that we did a substantial amount of work, we limited ourselves to only using Unity to render, and we coded all GameObjects, algorithms, assets, GPU accelerations, and shaders by ourselves. Unfortunately, learning Unity was probably half of the work in this project, since there was a lot of documentation to read and videos to watch before we could even start with the coding. We also used Blender to model trees and leaves, which we used as surface objects in order to make our terrain more realistic. We made these assets ourselves, without downloading or using any already existing models. Finally, we referenced many articles and videos throughout our implementation. We did not borrow any code except for a list of all possible marching cubes configurations which is a static table, but we used many ideas which are cited at the bottom of this page. 
 		</p>
 
 		<h4>2D Perlin Noise</h4>
 
+		<p stye="width: 100%">
+			Our first goal was to make a realistic procedurally generated surface. To make this surface, first we made a mesh of vertices, each with an $x$ and $z$ position where $-\frac{s}{2} \leq x, z \leq \frac{s}{2}$, where $s$ is the size of the grid. There are $n x n$ total vertices where $\frac{n}{s}$ is the resolution of the mesh. To create mountains and valleys and other dynamic objects, we then sampled the $Mathf.PerlinNoise$ function on each vertex's coordinate to get a $y$-value associated with it. The resulting terrain is shown below:
+
+		</p>
+
+		<p stye="width: 100%">
+			We even added a scroll feature that allowed us to maneuver around the terrain, since Perlin noise is continuous and deterministic upon its input:
+			
+		</p>
+		
+		<p stye="width: 100%">
+			Unfortunately, this was not enough, since the $y$-values could be in $[0, 1]$, a
+			
+		</p>
+		
 		<h4>3D Perlin Noise</h4>
 
 		<h4>Marching cubes</h4>
