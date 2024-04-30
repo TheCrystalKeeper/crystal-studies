@@ -1,6 +1,6 @@
 h2 {
 text-align: center;
-    color: #FFFFFF;
+    color: #17191A;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -8,11 +8,11 @@ text-align: center;
 
 body {
   margin: auto;
-  #width: 50%; 
+  width: 50%; 
   max-width: 960px;
   padding: 25px;
   font-family: 'Lexend Deca', sans-serif; 
-  background-color: #17191A;    
+  background-color: #ffffff;    
 }
 
 
@@ -26,15 +26,15 @@ img {
   font-family: "Lucida Console", "Courier New", monospace;
 }*/
 h3 {
-  color:  #FFFFFF;
+  color:  #17191A;
   font-family: Arial, Helvetica, sans-serif;
 }
 h4 {
-  color:  #FFFFFF;
+  color:  #17191A;
   font-family: Arial, Helvetica, sans-serif;
 }
 p {
-  color:  #FFFFFF;
+  color:  #17191A;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -45,7 +45,7 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 .ul {
-  color: #FFFFFF;
+  color: #17191A;
   font-family: Arial, Helvetica, sans-serif;
 }
 .container {
