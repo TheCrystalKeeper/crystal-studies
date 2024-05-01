@@ -77,20 +77,22 @@
 
 		</p>
 
-		<p stye="width: 100%">
-			We even added a scroll feature that allowed us to maneuver around the terrain, since Perlin noise is deterministic upon its input. We were able to generate more and more of the terrain in a way that seemed continuous, without having to render the entire world at once or save it on disk:
-			
-		</p>
-		
-		<p stye="width: 100%">
-			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
-		</p>
-
 		<center>
 			<img src="images/basic_terrain.png" alt="Basic Terrain" style="width: 50%">
 			<br>
 			<p>Height Map of Terrain Generated with 2D Perlin Noise.</p>
 		</center>
+
+		<p stye="width: 100%">
+			We even added a scroll feature that allowed us to maneuver around the terrain, since Perlin noise is deterministic upon its input. We were able to generate more and more of the terrain in a way that seemed continuous, without having to render the entire world at once or save it on disk:
+			
+		</p>
+
+
+		
+		<p stye="width: 100%">
+			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
+		</p>
 		
 		<h4>3D Perlin Noise</h4>
 		<p stye="width: 100%">
