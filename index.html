@@ -46,6 +46,10 @@
 		</center>
 		<br>
 
+		<center>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/cxeyDD6v5tk?si=s8C8dBPzm5JGvNVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</center>
+		
 		<h3>Abstract</h3>
 
 		<p stye="width: 100%">
@@ -61,6 +65,12 @@
 		</p>
 
 		<h4>2D Perlin Noise</h4>
+
+		<center>
+			<img src="images/perlin.png" alt="Perlin Noise" style="width: 25%">
+			<br>
+			<p>2D Perlin Noise.</p>
+		</center>
 
 		<p stye="width: 100%">
 			Our first goal was to make a realistic procedurally generated surface. To make this surface, first we made a mesh of vertices, each with an $x$ and $z$ position where $-\frac{s}{2} \leq x, z \leq \frac{s}{2}$, where $s$ is the size of the grid. There are $n x n$ total vertices where $\frac{n}{s}$ is the resolution of the mesh. To create mountains and valleys and other dynamic objects, we then sampled the Mathf.PerlinNoise function on each vertex's coordinate to get a $y$-value associated with it. The resulting terrain is shown below:
@@ -146,11 +156,23 @@
 		<p>
 			We defined particle collisions using each particle’s position and radius. We checked the distance between each particle and moved the particles in a random direction to the side if the particles were touching to simulate elastic collisions between the particles. We attempted to use terrain tangent vectors to calculate changes in direction due to collisions but we were not able to complete this in time. 
 		</p>
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+					<img src="gifs/ball_bounce_basic_terrain.gif" align="middle"  width="500px" />
+				  <figcaption>Sphere prefab with damping 0.5.</figcaption>
+				</td>
+				<td>
+				  <img src="gifs/petals_basic_terrain.gif" align="middle" width="500px"/>
+				  <figcaption>Petals prefab with damping 0.</figcaption>
+				</td>
+		  
+			  </tr>
+			</table>
+		  </div>
 		<p>
 			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled objects such as petals and hail in Blender and imported them into Unity, using the models as the object for the prefab. 
-		</p>
-		<p>
-			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled petals and hail in Blender and imported them into Unity, using the models as the object for the prefab.
 		</p>
 
 		<h4>Putting it All Together</h4>
