@@ -88,11 +88,44 @@
 			
 		</p>
 
-
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+				  <img src="images/2d_scroll_1.png" align="middle" width="400px"/>
+				  <figcaption>Scrollable plane</figcaption>
+				</td>
+				<td>
+				  <img src="images/2d_scroll_2.png" align="middle" width="400px"/>
+				  <figcaption>Settings allowing real-time scrolling and movement</figcaption>
+				</td>
+		  
+			  </tr>
+			</table>
+		  </div>
 		
 		<p stye="width: 100%">
 			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
 		</p>
+
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+				  <img src="images/freq_amp_default.png" align="middle" width="400px"/>
+				  <figcaption>Default plane with Frequency and Amplitude set to .5</figcaption>
+				</td>
+				<td>
+				  <img src="images/freq_amp_1.png" align="middle" width="400px"/>
+				  <figcaption>Plane with frequency set to .08 and Amplitude .5</figcaption>
+				</td>
+				<td>
+					<img src="images/freq_amp_2.png" align="middle" width="400px"/>
+					<figcaption>Plane with frequency set to .08 and Amplitude .9</figcaption>
+				</td>
+			  </tr>
+			</table>
+		  </div>
 		
 		<h4>3D Perlin Noise</h4>
 		<p stye="width: 100%">
@@ -107,6 +140,22 @@
 
 			This allowed us to create a three dimensional perlin noise world:
 		</p>
+
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+				  <img src="images/3d_perlin_1.png" align="middle" width="400px"/>
+				  <figcaption>3D Perlin Noise at a large scale (256x256x256, Frequency .2, Amplitude .8)</figcaption>
+				</td>
+				<td>
+				  <img src="images/3d_perlin_2.png" align="middle" width="400px"/>
+				  <figcaption>Local 3D perlin noise showcasing caves (64x64x64, Frequency .08, Amplitude .8)</figcaption>
+				</td>
+		  
+			  </tr>
+			</table>
+		  </div>
 
 		<p stye="width: 100%">
 			As you can see, there are caves and other unique features that this type of terrain generation has that 2D perlin noise could not render. Unfortunately, this noise doesn't allow for a smooth looking surface like the 2D perlin noise, so we will have to merge them together in the future to create realistic terrain. Additionally, the 3D aspect of this is currently just cubes, which would either be very computationally expensive if we wanted to increase the quality or if we wanted to increase size. To accomodate size, we implemented GPU instancing by using compute files and HLSL shaders, but to fix the blocky-ness of the overall output, we would have to implement Marching Cubes.
@@ -147,7 +196,7 @@
 		  </div>
 		
 		<p>
-			We also experimented with modifications of the Perlin Noise function, such as Perlin Noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1. Post-generation, we added bounding edges and colors to make the terrain more visually appealing.
+			Unfortunately, the images look a little funky since the caves are modeled by a mesh with vertices outside of our view. This is a cross-section angle of what a 3D marching cubes surface would look like. We also experimented with modifications of the Perlin Noise function, such as Perlin Noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1. Post-generation, we added bounding edges and colors to make the terrain more visually appealing.
 		</p>
 
 		<h4>Particle Simulation</h4>
@@ -182,6 +231,17 @@
 		<p>
 			So far, we've implemented a 2D perlin noise-based surface terrain generator, a three dimensional perlin noise-based cave system, a marching cubes algorithm to smooth the caves, a collision mechanic for our terrain with particles, and GPU acceleration to render our product at a large scale in real time. Putting it together, we combined the marching cubes based 3D terrain with the 2D surface representation by bounding the cave system by the surface. This created a beautiful world, rich with mountains, valleys, lakes, and caves. Overall, this project looked amazing and was a success.
 		</p>
+
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+					<img src="gifs/showcase.gif" align="middle"  width="500px" />
+				  <figcaption>Our final result with a surface, caves, and particle collision mechanics</figcaption>
+				</td>
+			  </tr>
+			</table>
+		  </div>
 
 		<h4>Results</h4>
 
