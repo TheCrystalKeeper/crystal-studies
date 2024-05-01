@@ -75,6 +75,12 @@
 		<p stye="width: 100%">
 			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
 		</p>
+
+		<center>
+			<img src="images/basic_terrain.png" alt="Basic Terrain" style="width: 50%">
+			<br>
+			<p>Height Map of Terrain Generated with 2D Perlin Noise.</p>
+		</center>
 		
 		<h4>3D Perlin Noise</h4>
 		<p stye="width: 100%">
@@ -129,7 +135,7 @@
 		  </div>
 		
 		<p>
-			We also experimented with modifications of the Perlin Noise function, such as Perlin Noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1.
+			We also experimented with modifications of the Perlin Noise function, such as Perlin Noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1. Post-generation, we added bounding edges and colors to make the terrain more visually appealing.
 		</p>
 
 		<h4>Particle Simulation</h4>
@@ -149,9 +155,13 @@
 
 		<h4>Putting it All Together</h4>
 
-		<h3>Results</h3>
+		<p>
+			The final terrain consists of a combination of 2D and 3D Perlin Noise, with Marching Cubes to create the 3D Perlin Noise mesh.
+		</p>
 
-		<h3>Challenges & Lessons Learned</h3>
+		<h4>Results</h4>
+
+		<h4>Challenges & Lessons Learned</h4>
 		<p>
 			One thing we learned from implementing the particle system was balancing accurate physics calculations, good visual appearance, and simplified calculations that more easily work with our terrain generation algorithm. For example, we had to adjust the particle's initial velocity so that it moved at a more realistic speed in each scene despite it not being the physically accurate value based on gravity.  
 		</p>
