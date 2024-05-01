@@ -152,6 +152,21 @@
 		<p>
 			We defined particle collisions using each particle’s position and radius. We checked the distance between each particle and moved the particles in a random direction to the side if the particles were touching to simulate elastic collisions between the particles. We attempted to use terrain tangent vectors to calculate changes in direction due to collisions but we were not able to complete this in time. 
 		</p>
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+					<img src="gifs/ball_bounce_basic_terrain.gif" align="middle"  width="250" />
+				  <figcaption>Sphere prefab with damping 0.5.</figcaption>
+				</td>
+				<td>
+				  <img src="gifs/petal_basic_terrain.gif" align="middle" width="400px"/>
+				  <figcaption>Petals prefab with damping 0.</figcaption>
+				</td>
+		  
+			  </tr>
+			</table>
+		  </div>
 		<p>
 			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled objects such as petals and hail in Blender and imported them into Unity, using the models as the object for the prefab. 
 		</p>
