@@ -194,6 +194,18 @@
 			  </tr>
 			</table>
 		  </div>
+
+		  <div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+				  <img src="gifs/marching_cube_rotate.gif" align="middle" width="400px"/>
+				  <figcaption>Marching cube cave structure.</figcaption>
+				</td>
+		  
+			  </tr>
+			</table>
+		  </div>
 		
 		<p>
 			Unfortunately, the images look a little funky since the caves are modeled by a mesh with vertices outside of our view. This is a cross-section angle of what a 3D marching cubes surface would look like. We also experimented with modifications of the Perlin Noise function, such as Perlin Noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1. Post-generation, we added bounding edges and colors to make the terrain more visually appealing.
@@ -212,11 +224,11 @@
 			  <tr align="center">
 				<td>
 					<img src="gifs/ball_bounce_basic_terrain.gif" align="middle"  width="500px" />
-				  <figcaption>Sphere prefab with damping 0.5.</figcaption>
+				  <figcaption>Sphere particles with damping 0.5.</figcaption>
 				</td>
 				<td>
 				  <img src="gifs/petals_basic_terrain.gif" align="middle" width="500px"/>
-				  <figcaption>Petals prefab with damping 0.</figcaption>
+				  <figcaption>Petal particles with damping 0.</figcaption>
 				</td>
 		  
 			  </tr>
@@ -232,6 +244,7 @@
 			So far, we've implemented a 2D perlin noise-based surface terrain generator, a three dimensional perlin noise-based cave system, a marching cubes algorithm to smooth the caves, a collision mechanic for our terrain with particles, and GPU acceleration to render our product at a large scale in real time. Putting it together, we combined the marching cubes based 3D terrain with the 2D surface representation by bounding the cave system by the surface. This created a beautiful world, rich with mountains, valleys, lakes, and caves. Overall, this project looked amazing and was a success.
 		</p>
 
+<<<<<<< HEAD
 		<div align="middle">
 			<table style="width:100%">
 			  <tr align="center">
@@ -245,10 +258,57 @@
 
 		<h4>Results</h4>
 
+=======
+>>>>>>> a897cf44a221a50e6ded1f44b357a9e9d61ec926
 		<h4>Challenges & Lessons Learned</h4>
 		<p>
 			One thing we learned from implementing the particle system was balancing accurate physics calculations, good visual appearance, and simplified calculations that more easily work with our terrain generation algorithm. For example, we had to adjust the particle's initial velocity so that it moved at a more realistic speed in each scene despite it not being the physically accurate value based on gravity.  
 		</p>
+
+		<h3>Results</h3>
+		<div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+					<img src="gifs/green_terrain_crop.gif" align="middle"  width="500px" />
+				  <figcaption>Green terrain</figcaption>
+				</td>
+				<td>
+					<img src="gifs/pink_terrain_crop.gif" align="middle"  width="500px" />
+				  <figcaption>Pink terrain</figcaption>
+				</td>
+				<td>
+				  <img src="gifs/yellow_terrain_crop.gif" align="middle" width="500px"/>
+				  <figcaption>Yellow terrain</figcaption>
+				</td>
+			  </tr>
+			</table>
+		  </div>
+		  <div align="middle">
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+					<img src="gifs/cube_zoom_in_crop.gif" align="middle"  width="600px" />
+				  <figcaption>Marching cube caves with pink terrain</figcaption>
+				</td>
+				<td>
+					<img src="gifs/falling_petals_crop.gif" align="middle"  width="600px" />
+				  <figcaption>Petals falling on pink terrain</figcaption>
+				</td>
+			  </tr>
+			</table>
+		  </div>
+
+		<h3>Showcase</h3>
+		<!-- <div align="middle"> -->
+			<table style="width:100%">
+			  <tr align="center">
+				<td>
+					<img src="gifs/showcase.gif" align="middle"  width="600px" />
+				</td>
+			  </tr>
+			</table>
+		  <!-- </div> -->
 
 		<h3>References</h3>
 
