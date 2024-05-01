@@ -100,23 +100,13 @@
 		<h4>Particle Simulation</h4>
 
 		<p>
-			For the particle system, we created a particle class with attributes such as position,
-velocity, and radius. The particles are initialized with a random position within the plane
-and added to a list of particles. Each particle starts with an initial downward velocity due
-to gravity and the particle position is updated based on the current velocity. We used the
-terrain vertices to determine when the particle collided with the terrain and bounced the
-particle off the ground with a certain damping factor.</p>
-<p>
-We defined particle collisions using each particle’s position and radius. We checked the
-distance between each particle and moved the particles randomly to the side if there
-was a collision to simulate elastic collisions between the particles. We attempted to use
-terrain tangent vectors to calculate changes in direction due to collisions but we were
-not able to complete this in time.
-</p>
-<p>
-We added the particles to Unity by creating a list of prefabs which are located at the
-positions defined by the particles in the particles list. We modeled petals and hail in
-Blender and imported them into Unity, using the models as the object for the prefab.
+			For the particle system, we created a particle class with attributes such as position, velocity, and radius. The particles are initialized with a random position above the terrain and added to a list of particles. Each particle starts with a downward velocity due to gravity and the particle position is updated by adding the current velocity multiplied by time elapsed. We used the terrain vertices to determine when the particle collided with the terrain by finding the highest point on the terrain below the particle. Upon collision with the terrain, we bounced the particle off the ground by flipping the velocity in the y direction, multiplied by a certain damping factor. 
+		</p>
+		<p>
+			We defined particle collisions using each particle’s position and radius. We checked the distance between each particle and moved the particles in a random direction to the side if the particles were touching to simulate elastic collisions between the particles. We attempted to use terrain tangent vectors to calculate changes in direction due to collisions but we were not able to complete this in time. 
+		</p>
+		<p>
+			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled objects such as petals and hail in Blender and imported them into Unity, using the models as the object for the prefab. 
 		</p>
 
 		<h3>Challenges & Lessons Learned</h3>
