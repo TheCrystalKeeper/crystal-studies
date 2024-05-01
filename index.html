@@ -13,7 +13,7 @@
     				}
   			};
 		</script>
- 		<Title>CS 184 Final Project Milestone</Title>
+ 		<Title>Terrain and Particle Generation</Title>
  		<link rel="stylesheet" href="styling.css">
 		
 		<style>
@@ -38,11 +38,11 @@
 
 	</head>
 	<body>
-		<h2>Terrain Generation</h2>
+		<h2>CS 184 Final Project</h2>
 		<!-- <h2>Robust Particle Simulator - Milestone</b></h2>-->
 		<center>
-		<h4 style="color: #17191A">By the Preposterous Particles:</h4>
-		<h5 style="color: #17191A">Jaron Erba, Jennifer Zhao, Sriram Srivatsan, and Lili Wang</h5>
+		<!-- <h4 style="color: #17191A">By the Preposterous Particles:</h4> -->
+		<h4 style="color: #17191A">Jaron Erba, Jennifer Zhao, Sriram Srivatsan, and Lili Wang</h4>
 		</center>
 		<br>
 
@@ -244,16 +244,10 @@
 			So far, we've implemented a 2D perlin noise-based surface terrain generator, a three dimensional perlin noise-based cave system, a marching cubes algorithm to smooth the caves, a collision mechanic for our terrain with particles, and GPU acceleration to render our product at a large scale in real time. Putting it together, we combined the marching cubes based 3D terrain with the 2D surface representation by bounding the cave system by the surface. This created a beautiful world, rich with mountains, valleys, lakes, and caves. Overall, this project looked amazing and was a success.
 		</p>
 
-		<div align="middle">
-			<table style="width:100%">
-			  <tr align="center">
-				<td>
-					<img src="gifs/showcase.gif" align="middle"  width="500px" />
-				  <figcaption>Our final result with a surface, caves, and particle collision mechanics</figcaption>
-				</td>
-			  </tr>
-			</table>
-		  </div>
+		  <h4>Challenges & Lessons Learned</h4>
+		  <p>
+			  One thing we learned from implementing the particle system was balancing accurate physics calculations, good visual appearance, and simplified calculations that more easily work with our terrain generation algorithm. For example, we had to adjust the particle's initial velocity so that it moved at a more realistic speed in each scene despite it not being the physically accurate value based on gravity.  
+		  </p>
 
 		<h3>Results</h3>
 		<div align="middle">
@@ -289,10 +283,6 @@
 			</table>
 		  </div>
 		  
-		<h4>Challenges & Lessons Learned</h4>
-		<p>
-			One thing we learned from implementing the particle system was balancing accurate physics calculations, good visual appearance, and simplified calculations that more easily work with our terrain generation algorithm. For example, we had to adjust the particle's initial velocity so that it moved at a more realistic speed in each scene despite it not being the physically accurate value based on gravity.  
-		</p>
 
 		<h3>Showcase</h3>
 		<!-- <div align="middle"> -->
