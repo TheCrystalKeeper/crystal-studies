@@ -49,7 +49,7 @@
 		<h3>Abstract</h3>
 
 		<p stye="width: 100%">
-			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is run upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic while also minimizing computational and storage overhead. In this project, we implemented multiple popular terrain generation algorithms such as 2D and 3D Perlin Noise and Marching Cubes, incorporating our own ideas in order to adapt the generation for the purpose of making unique and interesting scenes. In addition to that, we also developed a particle system that can interact with the intricacies of the terrain, offering a more immersive and dynamic experience.
+			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is run upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic while also minimizing computational and storage overhead. In this project, we implemented multiple popular terrain generation algorithms such as 2D and 3D Perlin Noise and Marching Cubes, incorporating our own ideas in order to adapt the generation to make unique and interesting scenes. In addition, we developed a particle system to interact with the intricacies of the terrain, offering a more immersive and dynamic experience.
 		</p>
 
 		<h3>Technical Approach</h3>
@@ -82,12 +82,20 @@
 		<h4>Marching cubes</h4>
 
 		<p>
-			The base of the terrain is generated using the Marching Cubes Algorithm. The Marching Cubes Algorithm fills a 3D grid in space with a polygon mesh surface. The 3D grid is iterated through cube by cube, with each cube adjacent to 8 vertices. (Also known as voxels.) Each vertex is determined to be within or above the surface of the terrain based on a threshold value. The Marching Cubes Algorithm then uses a lookup table to determine which edges of the cube are intersected by the surface and creates triangles based on the intersection points. 
+			The base of each terrain is generated using the Marching Cubes Algorithm. Marching Cubes iterates through each voxel of a 3D grid in space. Each voxel is a cube that is adjacent to 8 vertices. Each vertex is determined to be within or above the surface of the terrain based on a threshold value. Finally, <a href="https://paulbourke.net/geometry/polygonise/">a lookup table</a> is referenced to determine which edges on the cube are necessary for the resulting mesh. These edges are stored as vertices and triangles, which Unity processes into an object mesh.
 		</p>
-
-		<P>
-			alskdfjalskdfjasdfasdfasdfasdfasdf
-		</P>
+		
+		<br>
+		<center>
+			<img src="images/voxels.png" alt="Voxels" style="width: 50%">
+			<br>
+			<p>Possible Triangle Configurations for a Single Voxel.</p>
+		</center>
+		<br>
+		
+		<p>
+			For a realistically random distribution of configurations, we used the 3D Perlin Noise Function to assign an isovalue to each vertex. The isolevel threshold is 0.5, as is standard.
+		</p>
 
 		<h4>Particle Simulation</h4>
 
