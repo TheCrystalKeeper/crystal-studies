@@ -63,21 +63,36 @@
 		<h4>2D Perlin Noise</h4>
 
 		<p stye="width: 100%">
-			Our first goal was to make a realistic procedurally generated surface. To make this surface, first we made a mesh of vertices, each with an $x$ and $z$ position where $-\frac{s}{2} \leq x, z \leq \frac{s}{2}$, where $s$ is the size of the grid. There are $n x n$ total vertices where $\frac{n}{s}$ is the resolution of the mesh. To create mountains and valleys and other dynamic objects, we then sampled the $Mathf.PerlinNoise$ function on each vertex's coordinate to get a $y$-value associated with it. The resulting terrain is shown below:
+			Our first goal was to make a realistic procedurally generated surface. To make this surface, first we made a mesh of vertices, each with an $x$ and $z$ position where $-\frac{s}{2} \leq x, z \leq \frac{s}{2}$, where $s$ is the size of the grid. There are $n x n$ total vertices where $\frac{n}{s}$ is the resolution of the mesh. To create mountains and valleys and other dynamic objects, we then sampled the Mathf.PerlinNoise function on each vertex's coordinate to get a $y$-value associated with it. The resulting terrain is shown below:
 
 		</p>
 
 		<p stye="width: 100%">
-			We even added a scroll feature that allowed us to maneuver around the terrain, since Perlin noise is continuous and deterministic upon its input:
+			We even added a scroll feature that allowed us to maneuver around the terrain, since Perlin noise is deterministic upon its input. We were able to generate more and more of the terrain in a way that seemed continuous, without having to render the entire world at once or save it on disk:
 			
 		</p>
 		
 		<p stye="width: 100%">
-			Unfortunately, this was not enough, since the $y$-values could be in $[0, 1]$, a
-			
+			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
 		</p>
 		
 		<h4>3D Perlin Noise</h4>
+		<p stye="width: 100%">
+			Although 2D perlin noise works well, one major drawback is that the world is, well, 2D. Although visually the height map makes the world appear to have mountains, it isn't possible to have caves and other features that are commonly available in games. As a result, we implemented 3D perlin noise. Unfortunately, the Mathf.PerlinNoise function only takes two inputs. To solve this, we used the following set of equations to determine the perlin output at any set of points:
+			$$\text{a = Mathf.PerlinNoise((x + x_off) * frequency, (y + y_off) * frequency) / amplitude;}$$
+			$$\text{b = Mathf.PerlinNoise((y + y_off) * frequency, (z + z_off) * frequency) / amplitude;}$$
+			$$\text{c = Mathf.PerlinNoise((z + z_off) * frequency, (x + x_off) * frequency) / amplitude;}$$
+			$$\text{d = Mathf.PerlinNoise((x + x_off) * frequency, (z + z_off) * frequency) / amplitude;}$$
+			$$\text{e = Mathf.PerlinNoise((y + y_off) * frequency, (x + x_off) * frequency) / amplitude;}$$
+			$$\text{f = Mathf.PerlinNoise((z + z_off) * frequency, (y + y_off) * frequency) / amplitude;}$$
+			$$\text{return (a + b + c + d + e + f) / 6.0f;}$$
+
+			This allowed us to create a three dimensional perlin noise world:
+		</p>
+
+		<p stye="width: 100%">
+			As you can see, there are caves and other unique features that this type of terrain generation has that 2D perlin noise could not render. Unfortunately, this noise doesn't allow for a smooth looking surface like the 2D perlin noise, so we will have to merge them together in the future to create realistic terrain. Additionally, the 3D aspect of this is currently just cubes, which would either be very computationally expensive if we wanted to increase the quality or if we wanted to increase size. To accomodate size, we implemented GPU instancing by using compute files and HLSL shaders, but to fix the blocky-ness of the overall output, we would have to implement Marching Cubes.
+		</p>
 
 		<h4>Marching cubes</h4>
 
@@ -128,8 +143,16 @@
 		<p>
 			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled objects such as petals and hail in Blender and imported them into Unity, using the models as the object for the prefab. 
 		</p>
+		<p>
+			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled petals and hail in Blender and imported them into Unity, using the models as the object for the prefab.
+		</p>
+
+		<h4>Putting it All Together</h4>
 
 		<h3>Challenges & Lessons Learned</h3>
+		<p>
+			One thing we learned from implementing the particle system was balancing accurate physics calculations, good visual appearance, and simplified calculations that more easily work with our terrain generation algorithm. For example, we had to adjust the particle's initial velocity so that it moved at a more realistic speed in each scene despite it not being the physically accurate value based on gravity.  
+		</p>
 
 		<h3>Results</h3>
 
@@ -165,6 +188,9 @@
 				</li>
 				<li>
 					<a href="https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods">https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods</a>
+				</li>
+				<li>
+					<a href="https://www.gorillasun.de/blog/an-algorithm-for-particle-systems-with-collisions/">https://www.gorillasun.de/blog/an-algorithm-for-particle-systems-with-collisions/</a>
 				</li>
 			</ul>
 		</p>
