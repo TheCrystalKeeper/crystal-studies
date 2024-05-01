@@ -73,7 +73,7 @@
 		</center>
 
 		<p stye="width: 100%">
-			Our first goal was to make a realistic procedurally generated surface. To make this surface, first we made a mesh of vertices, each with an $x$ and $z$ position where $-\frac{s}{2} \leq x, z \leq \frac{s}{2}$, where $s$ is the size of the grid. There are $n x n$ total vertices where $\frac{n}{s}$ is the resolution of the mesh. To create mountains and valleys and other dynamic objects, we then sampled the Mathf.PerlinNoise function on each vertex's coordinate to get a $y$-value associated with it. The resulting terrain is shown below:
+			Our first goal was to make a realistic procedurally generated surface. To make this surface, first we made a mesh of vertices, each with an $x$ and $z$ position where $-\frac{s}{2} \leq x, z \leq \frac{s}{2}$, where $s$ is the size of the grid. There are $n \cdot n$ total vertices where $\frac{n}{s}$ is the resolution of the mesh. To create mountains and valleys and other dynamic objects, we then sampled the Mathf.PerlinNoise function on each vertex's coordinate to get a $y$-value associated with it. The resulting terrain is shown below:
 
 		</p>
 
