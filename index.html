@@ -53,7 +53,7 @@
 		<h3>Abstract</h3>
 
 		<p stye="width: 100%">
-			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is run upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic while also minimizing computational and storage overhead. In this project, we implemented multiple popular terrain generation algorithms such as 2D and 3D Perlin Noise and Marching Cubes, incorporating our own ideas in order to adapt the generation to make unique and interesting scenes. In addition, we developed a particle system to interact with the intricacies of the terrain, offering a more immersive and dynamic experience.
+			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is run upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic while also minimizing computational and storage overhead. In this project, we implemented multiple popular terrain generation algorithms such as 2D and 3D Perlin noise and Marching Cubes, incorporating our own ideas in order to adapt the generation to make unique and interesting scenes. In addition, we developed a particle system to interact with the intricacies of the terrain, offering a more immersive and dynamic experience.
 		</p>
 
 		<h3>Technical Approach</h3>
@@ -64,12 +64,12 @@
 			Due to the overhead of creating our own rendering application or building from a CS 184 project implementation, we decided to use Unity in order to help with rendering our objects and having datastructures we could modify. To ensure that we did a substantial amount of work, we limited ourselves to only using Unity to render, and we coded all GameObjects, algorithms, assets, GPU accelerations, and shaders by ourselves. Unfortunately, learning Unity was probably half of the work in this project, since there was a lot of documentation to read and videos to watch before we could even start with the coding. We also used Blender to model trees and leaves, which we used as surface objects in order to make our terrain more realistic. We made these assets ourselves, without downloading or using any already existing models. Finally, we referenced many articles and videos throughout our implementation. We did not borrow any code except for a list of all possible marching cubes configurations which is a static table, but we used many ideas which are cited at the bottom of this page. 
 		</p>
 
-		<h4>2D Perlin Noise</h4>
+		<h4>2D Perlin noise</h4>
 
 		<center>
-			<img src="images/perlin.png" alt="Perlin Noise" style="width: 25%">
+			<img src="images/perlin.png" alt="Perlin noise" style="width: 25%">
 			<br>
-			<p>2D Perlin Noise.</p>
+			<p>2D Perlin noise.</p>
 		</center>
 
 		<p stye="width: 100%">
@@ -80,7 +80,7 @@
 		<center>
 			<img src="images/basic_terrain.png" alt="Basic Terrain" style="width: 50%">
 			<br>
-			<p>Height Map of Terrain Generated with 2D Perlin Noise.</p>
+			<p>Height Map of Terrain Generated with 2D Perlin noise.</p>
 		</center>
 
 		<p stye="width: 100%">
@@ -105,7 +105,7 @@
 		  </div>
 		
 		<p stye="width: 100%">
-			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
+			Unfortunately, this was not enough, since the $y$-values were within the bounds of $[0, 1]$, causing the heights to either be too large or too small. To combat this, we add a height-scale factor that allowed us to make the mountains taller, or the elevation difference between two points larger. Additionally, the noise was very volatile in the sense that the ups and downs were too close to each other, not giving feel of mountains and valleys but rather unpaved concrete. As a fix, we implemented dynamically adjustable variable called frequency which changes the delta sampled, causing the changes to be volatile and more spread out, while maintaining all aspects of Perlin noise. This frequency is comparable to zooming in on the mesh, but with the added benefit of increased resolution.
 		</p>
 
 		<div align="middle">
@@ -127,9 +127,9 @@
 			</table>
 		  </div>
 		
-		<h4>3D Perlin Noise</h4>
+		<h4>3D Perlin noise</h4>
 		<p stye="width: 100%">
-			Although 2D perlin noise works well, one major drawback is that the world is, well, 2D. Although visually the height map makes the world appear to have mountains, it isn't possible to have caves and other features that are commonly available in games. As a result, we implemented 3D perlin noise. Unfortunately, the Mathf.PerlinNoise function only takes two inputs. To solve this, we used the following set of equations to determine the perlin output at any set of points:
+			Although 2D Perlin noise works well, one major drawback is that the world is, well, 2D. Although visually the height map makes the world appear to have mountains, it isn't possible to have caves and other features that are commonly available in games. As a result, we implemented 3D Perlin noise. Unfortunately, the Mathf.Perlinnoise function only takes two inputs. To solve this, we used the following set of equations to determine the Perlin output at any set of points:
 			$$\text{a = Mathf.PerlinNoise((x + x_off) * frequency, (y + y_off) * frequency) / amplitude;}$$
 			$$\text{b = Mathf.PerlinNoise((y + y_off) * frequency, (z + z_off) * frequency) / amplitude;}$$
 			$$\text{c = Mathf.PerlinNoise((z + z_off) * frequency, (x + x_off) * frequency) / amplitude;}$$
@@ -138,7 +138,7 @@
 			$$\text{f = Mathf.PerlinNoise((z + z_off) * frequency, (y + y_off) * frequency) / amplitude;}$$
 			$$\text{return (a + b + c + d + e + f) / 6.0f;}$$
 
-			This allowed us to create a three dimensional perlin noise world:
+			This allowed us to create a three dimensional Perlin noise world:
 		</p>
 
 		<div align="middle">
@@ -146,11 +146,11 @@
 			  <tr align="center">
 				<td>
 				  <img src="images/3d_perlin_1.png" align="middle" width="400px"/>
-				  <figcaption>3D Perlin Noise at a large scale (256x256x256, Frequency .2, Amplitude .8)</figcaption>
+				  <figcaption>3D Perlin noise at a large scale (256x256x256, Frequency .2, Amplitude .8)</figcaption>
 				</td>
 				<td>
 				  <img src="images/3d_perlin_2.png" align="middle" width="400px"/>
-				  <figcaption>Local 3D perlin noise showcasing caves (64x64x64, Frequency .08, Amplitude .8)</figcaption>
+				  <figcaption>Local 3D Perlin noise showcasing caves (64x64x64, Frequency .08, Amplitude .8)</figcaption>
 				</td>
 		  
 			  </tr>
@@ -158,7 +158,7 @@
 		  </div>
 
 		<p stye="width: 100%">
-			As you can see, there are caves and other unique features that this type of terrain generation has that 2D perlin noise could not render. Unfortunately, this noise doesn't allow for a smooth looking surface like the 2D perlin noise, so we will have to merge them together in the future to create realistic terrain. Additionally, the 3D aspect of this is currently just cubes, which would either be very computationally expensive if we wanted to increase the quality or if we wanted to increase size. To accomodate size, we implemented GPU instancing by using compute files and HLSL shaders, but to fix the blocky-ness of the overall output, we would have to implement Marching Cubes.
+			As you can see, there are caves and other unique features that this type of terrain generation has that 2D Perlin noise could not render. Unfortunately, this noise doesn't allow for a smooth looking surface like the 2D Perlin noise, so we will have to merge them together in the future to create realistic terrain. Additionally, the 3D aspect of this is currently just cubes, which would either be very computationally expensive if we wanted to increase the quality or if we wanted to increase size. To accomodate size, we implemented GPU instancing by using compute files and HLSL shaders, but to fix the blocky-ness of the overall output, we would have to implement Marching Cubes.
 		</p>
 
 		<h4>Marching cubes</h4>
@@ -176,7 +176,7 @@
 		<br>
 		
 		<p>
-			For a realistically random distribution of configurations, we used the 3D Perlin Noise Function to assign an isovalue to each vertex. The isolevel threshold is 0.5, as is standard.
+			For a realistically random distribution of configurations, we used the 3D Perlin noise Function to assign an isovalue to each vertex. The isolevel threshold is 0.5, as is standard.
 		</p>
 
 		<div align="middle">
@@ -208,7 +208,7 @@
 		  </div>
 		
 		<p>
-			Unfortunately, the images look a little funky since the caves are modeled by a mesh with vertices outside of our view. This is a cross-section angle of what a 3D marching cubes surface would look like. We also experimented with modifications of the Perlin Noise function, such as Perlin Noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1. Post-generation, we added bounding edges and colors to make the terrain more visually appealing.
+			Unfortunately, the images look a little funky since the caves are modeled by a mesh with vertices outside of our view. This is a cross-section angle of what a 3D marching cubes surface would look like. We also experimented with modifications of the Perlin noise function, such as Perlin noise with a Cosine distributed amplitude. Ultimately, we decided on an amplitude of 1, and a frequency of 0.1. Post-generation, we added bounding edges and colors to make the terrain more visually appealing.
 		</p>
 
 		<h4>Particle Simulation</h4>
@@ -241,7 +241,7 @@
 		<h4>Putting it All Together</h4>
 
 		<p>
-			So far, we've implemented a 2D perlin noise-based surface terrain generator, a three dimensional perlin noise-based cave system, a marching cubes algorithm to smooth the caves, a collision mechanic for our terrain with particles, and GPU acceleration to render our product at a large scale in real time. Putting it together, we combined the marching cubes based 3D terrain with the 2D surface representation by bounding the cave system by the surface. This created a beautiful world, rich with mountains, valleys, lakes, and caves. Overall, this project looked amazing and was a success.
+			So far, we've implemented a 2D Perlin noise-based surface terrain generator, a three dimensional Perlin noise-based cave system, a marching cubes algorithm to smooth the caves, a collision mechanic for our terrain with particles, and GPU acceleration to render our product at a large scale in real time. Putting it together, we combined the marching cubes based 3D terrain with the 2D surface representation by bounding the cave system by the surface. This created a beautiful world, rich with mountains, valleys, lakes, and caves. Overall, this project looked amazing and was a success.
 		</p>
 
 		  <h4>Challenges & Lessons Learned</h4>
@@ -314,9 +314,17 @@
 					<a href="https://learn.unity.com/tutorial/unity-interface-overview">https://learn.unity.com/tutorial/unity-interface-overview</a>
 				</li> -->
 			</ul>
+		
+		<h4>Perlin Noise</h4>
+		<p>
+			<ul style="color: #17191A">
+				<li>
+					<a href="https://en.wikipedia.org/wiki/Perlin_noise">https://en.wikipedia.org/wiki/Perlin_noise</a>
+				</li>
+			</ul>
+		</p>
 
 		<h4>Particle Simulation</h4>
-
 		<p>
 			<ul style="color: #17191A">
 				<li>
