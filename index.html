@@ -18,16 +18,17 @@
 		
 		<style>
 		a:link, a:visited {
-		  background-color: #17191A;
-		  color: #17191A;
-		  padding: 14px 25px;
-		  text-align: center;
+		  /* background-color: #17191A; */
+		  color: #84b8eb;
+		  /* padding: 14px 25px; */
+		  /* text-align: center; */
 		  text-decoration: none;
-		  display: inline-block;
+		  /* display: inline-block; */
 		}
 		
 		a:hover, a:active {
-		  background-color: white;
+		  /* background-color: white; */
+		  text-decoration: underline;
 		}
 
 		h4 {
@@ -48,7 +49,7 @@
 		<h3>Abstract</h3>
 
 		<p stye="width: 100%">
-			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is run upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic while also minimizing computational and storage overhead. In this project, we implemented multiple popular terrain generation algorithms such as 2D and 3D Perlin Noise and Marching Cubes, incorporating our own ideas in order to adapt the generation for the purpose of making unique and interesting scenes. In addition to that, we also developed a particle system that can interact with the intricacies of the terrain, offering a more immersive and dynamic experience.
+			Many popular games utilize aspects of terrain generation to create a realistic, yet non-deterministic, experience. The most prominent example of such a game is Minecraft, where a procedural generation script is run upon creation of a game instance, dynamically updating the terrain as more of the world is explored. Similarly, other games like No Man's Sky use algorithms like Marching Cubes and the Transvoxel Algorithm in order to make the world look more realistic while also minimizing computational and storage overhead. In this project, we implemented multiple popular terrain generation algorithms such as 2D and 3D Perlin Noise and Marching Cubes, incorporating our own ideas in order to adapt the generation to make unique and interesting scenes. In addition, we developed a particle system to interact with the intricacies of the terrain, offering a more immersive and dynamic experience.
 		</p>
 
 		<h3>Technical Approach</h3>
@@ -96,15 +97,31 @@
 		<h4>Marching cubes</h4>
 
 		<p>
-			The base of the terrain is generated using the Marching Cubes Algorithm. The Marching Cubes Algorithm fills a 3D grid in space with a polygon mesh surface. The 3D grid is iterated through cube by cube, with each cube adjacent to 8 vertices. (Also known as voxels.) Each vertex is determined to be within or above the surface of the terrain based on a threshold value. The Marching Cubes Algorithm then uses a lookup table to determine which edges of the cube are intersected by the surface and creates triangles based on the intersection points. 
+			The base of each terrain is generated using the Marching Cubes Algorithm. Marching Cubes iterates through each voxel of a 3D grid in space. Each voxel is a cube that is adjacent to 8 vertices. Each vertex is determined to be within or above the surface of the terrain based on a threshold value. Finally, <a href="https://paulbourke.net/geometry/polygonise/">a lookup table</a> is referenced to determine which edges on the cube are necessary for the resulting mesh. These edges are stored as vertices and triangles, which Unity processes into an object mesh.
+		</p>
+		
+		<br>
+		<center>
+			<img src="images/voxels.png" alt="Voxels" style="width: 50%">
+			<br>
+			<p>Possible Triangle Configurations for a Single Voxel.</p>
+		</center>
+		<br>
+		
+		<p>
+			For a realistically random distribution of configurations, we used the 3D Perlin Noise Function to assign an isovalue to each vertex. The isolevel threshold is 0.5, as is standard.
 		</p>
 
 		<h4>Particle Simulation</h4>
 
 		<p>
-			For the particle system, we created a particle class with attributes such as position, velocity, and radius. The particles are initialized with a random position within the plane and added to a list of particles. Each particle starts with an initial downward velocity due to gravity and the particle position is updated based on the current velocity. We used the terrain vertices to determine when the particle collided with the terrain and bounced the particle off the ground with a certain damping factor.</p>
+			For the particle system, we created a particle class with attributes such as position, velocity, and radius. The particles are initialized with a random position above the terrain and added to a list of particles. Each particle starts with a downward velocity due to gravity and the particle position is updated by adding the current velocity multiplied by time elapsed. We used the terrain vertices to determine when the particle collided with the terrain by finding the highest point on the terrain below the particle. Upon collision with the terrain, we bounced the particle off the ground by flipping the velocity in the y direction, multiplied by a certain damping factor. 
+		</p>
 		<p>
-			We defined particle collisions using each particle’s position and radius. We checked the distance between each particle and moved the particles randomly to the side if there was a collision to simulate elastic collisions between the particles. We attempted to use terrain tangent vectors to calculate changes in direction due to collisions but we were not able to complete this in time.
+			We defined particle collisions using each particle’s position and radius. We checked the distance between each particle and moved the particles in a random direction to the side if the particles were touching to simulate elastic collisions between the particles. We attempted to use terrain tangent vectors to calculate changes in direction due to collisions but we were not able to complete this in time. 
+		</p>
+		<p>
+			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled objects such as petals and hail in Blender and imported them into Unity, using the models as the object for the prefab. 
 		</p>
 		<p>
 			We added the particles to Unity by creating a list of prefabs which are located at the positions defined by the particles in the particles list. We modeled petals and hail in Blender and imported them into Unity, using the models as the object for the prefab.
@@ -113,10 +130,75 @@
 		<h4>Putting it All Together</h4>
 
 		<h3>Challenges & Lessons Learned</h3>
+		<p>
+			One thing we learned from implementing the particle system was balancing accurate physics calculations, good visual appearance, and simplified calculations that more easily work with our terrain generation algorithm. For example, we had to adjust the particle's initial velocity so that it moved at a more realistic speed in each scene despite it not being the physically accurate value based on gravity.  
+		</p>
 
 		<h3>Results</h3>
 
 		<h3>References</h3>
+
+		<h4>Unity</h4>
+
+		<p>
+			<ul style="color: #17191A">
+				<li>
+					<a href="https://docs.unity3d.com/Manual/index.html">https://docs.unity3d.com/Manual/index.html</a>
+				</li>
+				<li>
+					<a href="https://forum.unity.com/">https://forum.unity.com/</a>
+				</li>
+				<!-- <li>
+					<a href="https://learn.unity.com/tutorial/creating-a-new-project">https://learn.unity.com/tutorial/creating-a-new-project</a>
+				</li>
+				<li>
+					<a href="https://learn.unity.com/tutorial/unity-interface-overview">https://learn.unity.com/tutorial/unity-interface-overview</a>
+				</li> -->
+			</ul>
+
+		<h4>Particle Simulation</h4>
+
+		<p>
+			<ul style="color: #17191A">
+				<li>
+					<a href="https://fvcaputo.github.io/2016/01/11/sand-particle-system-in-unity.html">https://fvcaputo.github.io/2016/01/11/sand-particle-system-in-unity.html</a>
+				</li>
+				<li>
+					<a href="https://teaching.smp.uq.edu.au/scims/Adv_calculus/Velocity_field.html">https://teaching.smp.uq.edu.au/scims/Adv_calculus/Velocity_field.html</a>
+				</li>
+				<li>
+					<a href="https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods">https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods</a>
+				</li>
+				<li>
+					<a href="https://www.gorillasun.de/blog/an-algorithm-for-particle-systems-with-collisions/">https://www.gorillasun.de/blog/an-algorithm-for-particle-systems-with-collisions/</a>
+				</li>
+			</ul>
+		</p>
+
+		<h4>Marching Cubes</h4>
+
+		<p>
+			<ul style="color: #17191A">
+				<li>
+					<a href="https://groups.csail.mit.edu/graphics/classes/6.838/S98/meetings/m7/voxels.html">https://groups.csail.mit.edu/graphics/classes/6.838/S98/meetings/m7/voxels.html</a>
+				</li>
+				<li>
+					<a href="https://paulbourke.net/geometry/polygonise/">https://paulbourke.net/geometry/polygonise/</a>
+				</li>
+				<li>
+					<a href="https://en.wikipedia.org/wiki/Marching_cubes">https://en.wikipedia.org/wiki/Marching_cubes</a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=M3iI2l0ltbE">https://www.youtube.com/watch?v=M3iI2l0ltbE</a>
+				</li>
+				<li>
+					<a href="https://developer.nvidia.com/gpugems/gpugems3/part-i-geometry/chapter-1-generating-complex-procedural-terrains-using-gpu">https://developer.nvidia.com/gpugems/gpugems3/part-i-geometry/chapter-1-generating-complex-procedural-terrains-using-gpu</a>
+				</li>
+				<li>
+					<a href="https://fileadmin.cs.lth.se/cs/Education/EDAN35/projects/20FilipMathias_MCTerrain.pdf">https://fileadmin.cs.lth.se/cs/Education/EDAN35/projects/20FilipMathias_MCTerrain.pdf</a>
+				</li>
+
+			</ul>
 
 		<h3>Constributions from Each Team Member</h3>
 
